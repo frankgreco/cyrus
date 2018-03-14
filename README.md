@@ -2,8 +2,6 @@
 
 > PKI registration authority for Kubernetes.
 
-_**NOTE**: This project is not yet recommended for production use._
-
 ## Motivation
 
 Securing inter-cluster traffic via TLS is important for two main reasons:
