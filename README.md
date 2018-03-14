@@ -41,3 +41,7 @@ spec:
 ```
 
 ## Assumptions
+
+Cyrus makes some assumptions which are listed below:
+
+* It is assumed that inter-cluster traffic will occur by referencing either the service's DNS record(s) or cluster IP. It is assumed that a specific pod's DNS record(s) or IP are not used.
