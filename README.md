@@ -10,7 +10,7 @@ Securing inter-cluster traffic via TLS is important for two main reasons:
 
 While the importance of TLS is recognized, it can be difficult to effectively and efficiently manage a PKI infrastructure in such a dynamic environment at any scale. To mitigate this difficultly, numerous approaches are taken. Here are a few that I have seen:
 * Terminate TLS at the edge of a cluster and forgo the use of TLS for inter-cluster traffic.
-* Use a [Mutating Webhook](https://kubernetes.io/docs/admin/admission-controllers/#mutatingadmissionwebhook-beta-in-19) to dynamically inject a _sidecar_ container into each pod that is responsible for TLS termination for inter-cluster traffic.
+* Use a [Mutating Webhook](https://kubernetes.io/docs/admin/admission-controllers/#mutatingadmissionwebhook-beta-in-19) to dynamically inject a _sidecar_ container into each pod that is responsible for TLS termination for inter-cluster traffic. _Note that if you are already using a service mesh, namely [Istio](https://github.com/istio), then this functionality is already [part of that project](https://github.com/istio/istio/tree/master/security) and you should utilize that instead._
 * Use the same certificate authority and certificate/key pair to secure all inter-cluster or inter-namespace traffic. Note that this approach is not a complete mitigation however as it omits the verification component of TLS.
 
 The goal of this project is to function as a registration authority and provide dynamic TLS assets for inter-cluster traffic. This project aims to accomplish this without the need of a _sidecar_ container and without minimizing the benefits that TLS provides.
@@ -39,3 +39,5 @@ spec:
   ports:
   - port: 443
 ```
+
+## Assumptions
